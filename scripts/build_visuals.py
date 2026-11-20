@@ -9,9 +9,12 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import svgkit  # noqa: E402
+from darkmode import to_dark  # noqa: E402
 from render_png import render  # noqa: E402
 
 ASSETS = HERE.parent / "assets"
+# hero, demo and social preview are dark by design; the diagrams get a dark twin
+LIGHT_ONLY = {"architecture-executive", "architecture-engineering", "claim-verification-loop", "overview"}
 
 
 def main(only: list[str] | None = None) -> None:
@@ -40,6 +43,11 @@ def main(only: list[str] | None = None) -> None:
         S.save(str(svg))
         render(svg, ASSETS / f"{name}.png")
         print("built", name)
+        if name in LIGHT_ONLY:
+            dark = ASSETS / f"{name}-dark.svg"
+            dark.write_text(to_dark(svg.read_text(encoding="utf-8")), encoding="utf-8")
+            render(dark, ASSETS / f"{name}-dark.png")
+            print("built", name, "(dark)")
     for w in svgkit.WARNINGS:
         print("WARN", w)
 

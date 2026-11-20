@@ -6,6 +6,10 @@
 
 **An investigation agent that cannot assert what it cannot prove.** A risk event goes in. Every statement in the case file that comes out is tied to a source record, re-checked by code, and reviewed by a human who makes the decision.
 
+<p align="center">
+  <a href="https://github.com/mustafa-akgul/proofline/actions/workflows/ci.yml"><img src="https://github.com/mustafa-akgul/proofline/actions/workflows/ci.yml/badge.svg" alt="tests"></a>
+</p>
+
 Proofline is a reference prototype of that idea, built on synthetic invoice and payment data. It runs offline with the Python standard library, needs no API key, and ships with 65 tests.
 
 ```bash
@@ -41,7 +45,10 @@ The invoice-ring scenario is fictional. All entities, amounts and the "risk scor
 ## How it works
 
 <p align="center">
-  <img src="assets/overview.png" alt="Proofline overview: plan and collect, validate, narrate, verify claims, human review" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/overview-dark.png">
+    <img src="assets/overview.png" alt="Proofline overview: plan and collect, validate, narrate, verify claims, human review" width="100%">
+  </picture>
 </p>
 
 The [one-page executive architecture](assets/architecture-executive.png) shows every component and what is built versus design only.
@@ -55,7 +62,10 @@ The [one-page executive architecture](assets/architecture-executive.png) shows e
 In the demo, version 1 of the case can only say a closed invoice chain is *possible*, because the connecting invoice is outside the authorized scope. The reviewer's request widens the scope under policy, and version 2 confirms the chain.
 
 <p align="center">
-  <img src="assets/claim-verification-loop.png" alt="Claim verification loop" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/claim-verification-loop-dark.png">
+    <img src="assets/claim-verification-loop.png" alt="Claim verification loop" width="100%">
+  </picture>
 </p>
 
 The [engineering architecture](assets/architecture-engineering.png) shows the trust zones, modules and data contracts. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) covers them in prose, including the threat model for instructions hidden in evidence text.
