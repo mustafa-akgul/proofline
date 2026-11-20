@@ -1,0 +1,25 @@
+{
+  "policy_ref": "proofline-policy/v1",
+  "principals": {
+    "agent-01": { "role": "investigation-agent", "kind": "agent" },
+    "reviewer-01": { "role": "reviewer", "kind": "human" }
+  },
+  "roles": {
+    "investigation-agent": {
+      "tools": ["get_entity", "list_invoices", "list_transactions", "monthly_invoice_summary"],
+      "purposes": ["risk-case-investigation"],
+      "max_rows": 500,
+      "max_scope_entities": 8,
+      "can_record_decision": false,
+      "can_expand_scope": false
+    },
+    "reviewer": {
+      "tools": [],
+      "purposes": ["case-review"],
+      "max_rows": 0,
+      "max_scope_entities": 8,
+      "can_record_decision": true,
+      "can_expand_scope": true
+    }
+  }
+}
