@@ -9,7 +9,7 @@
 Proofline is a reference prototype of that idea, built on synthetic invoice and payment data. It runs offline with the Python standard library, needs no API key, and ships with 65 tests.
 
 ```bash
-git clone <this repository> && cd proofline
+git clone https://github.com/mustafa-akgul/proofline.git && cd proofline
 pip install -e ".[dev]"
 python -m proofline demo        # well under a second, writes out/case_v2.md
 python -m pytest                # 65 tests
